@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Apr 19, 2020 7:59:47 AM by Hibernate Tools 5.2.12.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="warehouse_management" dynamic-insert="false" dynamic-update="false" mutable="true" name="com.manhnk.app.model.Menu" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="menu">
+        <id name="id" type="long">
+            <column name="id"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="parentId" optimistic-lock="true" type="long" unique="false">
+            <column name="parent_id" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="url" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="url" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="name" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="name" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="oderIndex" optimistic-lock="true" type="int" unique="false">
+            <column name="oder_index" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="activeFlag" optimistic-lock="true" type="int" unique="false">
+            <column name="active_flag" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="createdDate" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="26" name="created_date" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="updateDate" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="26" name="update_date" not-null="true"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="auths" optimistic-lock="true" sort="unsorted" table="auth">
+            <key on-delete="noaction">
+                <column name="menu_id" not-null="true"/>
+            </key>
+            <one-to-many class="com.manhnk.app.model.Auth" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>
